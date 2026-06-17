@@ -454,7 +454,7 @@ class HomeController extends Controller
                 if($data['is_staf']){
                     // Mail::to($data['email'])->send(new MailBirthday($data));
                     Mail::to($data['email'])->queue(new MailBirthday($data));
-                    Log::info("berhasil mengirim ucapan HBD ke ".$u->name);
+                    Log::info("berhasil mengirim ucapan HBD ke ".json_encode($u->name));
                     //----------------WA-------------------------------
                     if($u->phone){
                         $WA_DATA = array();
@@ -469,7 +469,7 @@ Terima kasih atas dedikasi dan kontribusi yang telah diberikan. 🌟\n\nSalam ha
                 } else if ($data['is_mhs']){
                     // Mail::to($data['email'])->send(new MailBirthday($data));
                     Mail::to($data['email'])->queue(new MailBirthday($data));
-                    Log::info("berhasil mengirim ucapan HBD ke ".$u->name);
+                    Log::info("berhasil mengirim ucapan HBD ke ".json_encode($u->name));
                     //----------------WA-------------------------------
                     if($u->phone){
                         $WA_DATA = array();
