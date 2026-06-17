@@ -424,7 +424,10 @@ class HomeController extends Controller
                             if($wa_to != null){
                                 $WA_DATA = array();
                                 $WA_DATA['wa_to'] = $wa_to;
-                                $WA_DATA['wa_text'] = "SJGU TES WA\nbreak\nline\ntest lagi\n_ini miring_\n*ini tebal*";
+                                $WA_DATA['wa_text'] = "SJGU TES WA\nbreak\nline\ntest lagi\n_ini miring_\n*ini tebal*🎂 HBD ".$wa_to. " 🎉\n
+Keluarga besar _Jakarta Global University_ mengucapkan selamat ulang tahun ke-".$wa_to.". 
+Semoga panjang umur, sehat selalu, dan sukses dalam setiap langkah. 
+Terima kasih atas dedikasi dan kontribusi yang telah diberikan. 🌟\n\nSalam hangat,\n*JGU*\n";
                                 dispatch(new JobNotificationWA($WA_DATA));
                             }
                             // ------------------end send to WA-----------------
