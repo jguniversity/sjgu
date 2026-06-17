@@ -61,10 +61,10 @@ class JobNotificationWA implements ShouldQueue
             // var_dump($response);
             if(isset($response->status)){
                 if(!$response->status){
-                    Log::warning($response);
+                    Log::warning(json_encode($response));
                 } 
             } else {
-                Log::warning($response);
+                Log::warning(json_encode($response));
             }
             curl_close($curl);
         }
