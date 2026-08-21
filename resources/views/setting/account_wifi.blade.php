@@ -88,7 +88,7 @@
                         <div class="col-sm-12 fv-plugins-icon-container">
                             <label class="form-label" for="basicDate">Username / NIK / NIM <small class="text-danger">*</small></label>
                             <div class="input-group input-group-merge has-validation">
-                                <input type="text" class="form-control @error('username') is-invalid @enderror" name="username" id="nik"
+                                <input type="text" class="form-control @error('username') is-invalid @enderror" name="username" id="nik" onkeyup="createPassword()" 
                                     placeholder="Nomor Induk Karyawan / NIM" value="{{ old('username') }}">
                                 @error('username')
                                 <span class="invalid-feedback" role="alert">
@@ -207,14 +207,27 @@
     }, 350);
 
     function createPassword(){
-        var x = $('#nama').val();
-        x = x.replace(/[^A-Z0-9]+/ig, "");
-        x = x.toUpperCase();
-        var init = x.substring(0, 5);
-        if(init.length < 5){
-            init = init.padEnd(5, 'X')
+        var username = $('#nik').val();
+        var init;
+
+        if(username != null && username != "" && username.toUpperCase().startsWith("S09")){
+            // Username S09xxx digunakan sebagai password
+            init = username.toUpperCase();
+        } else {
+            // Username lainnya menggunakan nama + 3 angka random
+            var x = $('#nama').val();
+            x = x.replace(/[^A-Z0-9]+/ig, "");
+            x = x.toUpperCase();
+
+            init = x.substring(0, 5);
+
+            if(init.length < 5){
+                init = init.padEnd(5, 'X');
+            }
+
+            init = init + Math.floor(100 + Math.random() * 900);
         }
-        init = init + "" + Math.floor(100 + Math.random() * 900);
+
         document.getElementById("password").value = init;
     }
 
