@@ -31,6 +31,7 @@ Route::get('/login/sso_klas2/', [App\Http\Controllers\HomeController::class, 'ss
 Route::any('/login/siap/', [App\Http\Controllers\HomeController::class, 'sso_siap'])->name('sso_siap');
 Route::get('/login/google', [App\Http\Controllers\GoogleController::class, 'redirectToGoogle']);
 Route::get('/login/google/callback', [App\Http\Controllers\GoogleController::class, 'handleCallback']);
+Route::get('/dashboard/birthday', [App\Http\Controllers\HomeController::class, 'birthdayToday'])->name('dashboard.birthday');
 
 //User
 Route::group(['middleware' => ['auth']], function () {

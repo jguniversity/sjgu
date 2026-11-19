@@ -18,6 +18,74 @@
         <!-- /Search -->
         <ul class="navbar-nav flex-row align-items-center ms-auto">
 
+            <li class="nav-item dropdown-notifications navbar-dropdown dropdown me-3 me-xl-2">
+
+                <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown"
+                    data-bs-auto-close="outside" aria-expanded="false">
+
+                    <span class="position-relative">
+                        <i class="icon-base bx bx-cake icon-md"></i>
+
+                        <!-- Badge jumlah ulang tahun -->
+                        <span id="birthdayNotificationBadge"
+                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                            style="display:none; font-size:9px;">
+                            0
+                        </span>
+                    </span>
+                </a>
+
+                <ul class="dropdown-menu dropdown-menu-end p-0">
+
+                    <!-- Header -->
+                    <li class="dropdown-menu-header border-bottom">
+                        <div class="dropdown-header d-flex align-items-center py-3">
+
+                            <h6 class="mb-0 me-auto">
+                                <i class="bx bx-cake me-1 text-danger"></i>
+                               Ulang Tahun hari ini
+                            </h6>
+
+                            <div class="d-flex align-items-center h6 mb-0">
+                                <span id="birthdayTotal" class="badge bg-label-primary me-2">
+                                    0 orang
+                                </span>
+                            </div>
+
+                        </div>
+                    </li>
+
+                    <!-- List -->
+                    <li class="dropdown-notifications-list scrollable-container">
+
+                        <ul class="list-group list-group-flush" id="birthdayNotificationList">
+
+                            <!-- Loading -->
+                            <li class="list-group-item text-center py-4" id="birthdayLoading">
+
+                                <div class="spinner-border spinner-border-sm text-primary"></div>
+
+                                <div class="small text-muted mt-2">
+                                    Memuat data...
+                                </div>
+                            </li>
+
+                        </ul>
+
+                    </li>
+
+                    <!-- Footer -->
+                    <li class="border-top">
+                        <div class="d-flex justify-content-center py-2">
+                            <small class="text-muted">
+                                ❤️ Dari Keluarga Besar Universitas Global Jakarta
+                            </small>
+                        </div>
+                    </li>
+
+                </ul>
+            </li>
+
             <!-- User -->
             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow" href="" data-bs-toggle="dropdown">
@@ -51,13 +119,15 @@
                         </a>
                     </li>
                     <li class="">
-                        <a class="dropdown-item {{ Route::currentRouteName()=='user.edit' ? 'active' : '' }}" href="{{ route('user.edit') }}">
+                        <a class="dropdown-item {{ Route::currentRouteName()=='user.edit' ? 'active' : '' }}"
+                            href="{{ route('user.edit') }}">
                             <i class="bx bx-cog  me-2"></i>
                             <span class="align-middle">Edit Profil</span>
                         </a>
                     </li>
                     <li class="">
-                        <a class="dropdown-item {{ Route::currentRouteName()=='wifi' ? 'active' : '' }}" href="{{ route('wifi') }}">
+                        <a class="dropdown-item {{ Route::currentRouteName()=='wifi' ? 'active' : '' }}"
+                            href="{{ route('wifi') }}">
                             <i class="bx bx-wifi  me-2"></i>
                             <span class="align-middle">Portal Wifi</span>
                         </a>

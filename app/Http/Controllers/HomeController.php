@@ -349,6 +349,32 @@ class HomeController extends Controller
         }
     }
 
+    public function birthdayToday()
+    {
+        $today = Carbon::today();
+
+        $users = DB::table('users')
+            ->select('id', 'name', 'job', 'birth_date')
+            ->whereNotNull('birth_date')
+            ->whereMonth('birth_date', $today->month)
+            ->whereDay('birth_date', $today->day)
+            ->where('status', true)
+            ->orderBy('name')
+            ->get()
+            ->map(function ($user) use ($today) {
+                $user->age = Carbon::parse($user->birth_date)->age;
+                $user->encrypted_id = Crypt::encrypt($user->id);
+
+                return $user;
+            });
+
+        return response()->json([
+            'success' => true,
+            'total' => $users->count(),
+            'data' => $users
+        ]);
+    }
+
     public function tes(){
         $hr   = DocDepartment::where('name','Wakil Rektor II')->first();
         if($hr){
