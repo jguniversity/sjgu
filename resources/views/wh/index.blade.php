@@ -113,10 +113,10 @@
                     <th width="60px">Hari/Tgl</th>
                     <th width="60px">Masuk</th>
                     <th width="60px">Keluar</th>
-                    <th width="60px">Telat</th>
+                    {{-- <th width="60px">Telat</th>
                     <th width="80px">Plg Cepat</th>
                     <th width="60px">Jam Lembur</th>
-                    <th width="60px">Jam Kurang</th>
+                    <th width="60px">Jam Kurang</th> --}}
                     <th width="80px" data-priority="3">Total Jam/Hari</th>
                 </tr>
             </thead>
@@ -126,10 +126,10 @@
                     <th width="60px"></th>
                     <th width="60px"></th>
                     <th width="60px"></th>
-                    <th width="60px"></th>
+                    {{-- <th width="60px"></th>
                     <th width="80px"></th>
                     <th width="60px"></th>
-                    <th width="60px"></th>
+                    <th width="60px"></th> --}}
                     <th width="80px" id="Total_All" class="text-center"></th>
                 </tr>
             </tfoot>
@@ -265,22 +265,22 @@
                         }
                     },
                 },
-                {
-                    data: 'telat',
-                    name: 'telat'
-                },
-                {
-                    data: 'cepat',
-                    name: 'cepat'
-                },
-                {
-                    data: 'lembur',
-                    name: 'lembur'
-                },
-                {
-                    data: 'kurang',
-                    name: 'kurang'
-                }, 
+                // {
+                //     data: 'telat',
+                //     name: 'telat'
+                // },
+                // {
+                //     data: 'cepat',
+                //     name: 'cepat'
+                // },
+                // {
+                //     data: 'lembur',
+                //     name: 'lembur'
+                // },
+                // {
+                //     data: 'kurang',
+                //     name: 'kurang'
+                // }, 
                 {
                     data: 'total_jam',
                     name: 'total_jam'

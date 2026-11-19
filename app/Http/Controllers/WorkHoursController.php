@@ -217,56 +217,56 @@ class WorkHoursController extends Controller
                         });
                     }
                 })
-                ->addColumn('telat', function($x){
-                    if(new Carbon($x->masuk) > new Carbon($x->tanggal." ".$x->time_in)){
-                        return (new Carbon($x->masuk))->diff(new Carbon($x->tanggal." ".$x->time_in))->format('%h:%I');
-                    } else {
-                        return null;
-                    }
-                  })
-                ->addColumn('cepat', function($x){
-                    if((new Carbon($x->tanggal))->dayOfWeek == Carbon::SATURDAY){
-                        if((new Carbon($x->keluar) < new Carbon($x->tanggal." 14:00:00")) && $x->total_jam != '00:00:00'){
-                            return (new Carbon($x->keluar))->diff(new Carbon($x->tanggal." 14:00:00"))->format('-%h:%I');
-                        } else {
-                            return null;
-                        }
-                    } elseif ((new Carbon($x->tanggal))->dayOfWeek == Carbon::SUNDAY){
-                        return null;
-                    } else {
-                        if((new Carbon($x->keluar) < new Carbon($x->tanggal." ".$x->time_out)) && $x->total_jam != '00:00:00'){
-                            return (new Carbon($x->keluar))->diff(new Carbon($x->tanggal." ".$x->time_out))->format('-%h:%I');
-                        } else {
-                            return null;
-                        }
-                    }
-                  })
-                ->addColumn('lembur', function($x){
-                    $lemburSetelah = ((Carbon::parse($x->time_total) < new Carbon("10:00:00")) ? new Carbon("10:00:00") : Carbon::parse($x->time_total));
-                    if(new Carbon($x->total_jam) > new Carbon($lemburSetelah)){
-                        return (new Carbon($x->total_jam))->diff(new Carbon($lemburSetelah))->format('%h:%I');
-                    } else {
-                        return null;
-                    }
-                  })
-                ->addColumn('kurang', function($x){
-                    if((new Carbon($x->tanggal))->dayOfWeek == Carbon::SATURDAY){
-                        if(new Carbon($x->total_jam) < new Carbon("06:00:00")){
-                            return (new Carbon($x->total_jam))->diff(new Carbon("06:00:00"))->format('%h:%I');
-                        } else {
-                            return null;
-                        }
-                    } elseif ((new Carbon($x->tanggal))->dayOfWeek == Carbon::SUNDAY){
-                        return null;
-                    } else {
-                        if(new Carbon($x->total_jam) < new Carbon($x->time_total)){
-                            return (new Carbon($x->total_jam))->diff(new Carbon($x->time_total))->format('%h:%I');
-                        } else {
-                            return null;
-                        }
-                    }
-                  })
-                ->rawColumns(['telat','cepat','lembur'])
+                // ->addColumn('telat', function($x){
+                //     if(new Carbon($x->masuk) > new Carbon($x->tanggal." ".$x->time_in)){
+                //         return (new Carbon($x->masuk))->diff(new Carbon($x->tanggal." ".$x->time_in))->format('%h:%I');
+                //     } else {
+                //         return null;
+                //     }
+                //   })
+                // ->addColumn('cepat', function($x){
+                //     if((new Carbon($x->tanggal))->dayOfWeek == Carbon::SATURDAY){
+                //         if((new Carbon($x->keluar) < new Carbon($x->tanggal." 14:00:00")) && $x->total_jam != '00:00:00'){
+                //             return (new Carbon($x->keluar))->diff(new Carbon($x->tanggal." 14:00:00"))->format('-%h:%I');
+                //         } else {
+                //             return null;
+                //         }
+                //     } elseif ((new Carbon($x->tanggal))->dayOfWeek == Carbon::SUNDAY){
+                //         return null;
+                //     } else {
+                //         if((new Carbon($x->keluar) < new Carbon($x->tanggal." ".$x->time_out)) && $x->total_jam != '00:00:00'){
+                //             return (new Carbon($x->keluar))->diff(new Carbon($x->tanggal." ".$x->time_out))->format('-%h:%I');
+                //         } else {
+                //             return null;
+                //         }
+                //     }
+                //   })
+                // ->addColumn('lembur', function($x){
+                //     $lemburSetelah = ((Carbon::parse($x->time_total) < new Carbon("10:00:00")) ? new Carbon("10:00:00") : Carbon::parse($x->time_total));
+                //     if(new Carbon($x->total_jam) > new Carbon($lemburSetelah)){
+                //         return (new Carbon($x->total_jam))->diff(new Carbon($lemburSetelah))->format('%h:%I');
+                //     } else {
+                //         return null;
+                //     }
+                //   })
+                // ->addColumn('kurang', function($x){
+                //     if((new Carbon($x->tanggal))->dayOfWeek == Carbon::SATURDAY){
+                //         if(new Carbon($x->total_jam) < new Carbon("06:00:00")){
+                //             return (new Carbon($x->total_jam))->diff(new Carbon("06:00:00"))->format('%h:%I');
+                //         } else {
+                //             return null;
+                //         }
+                //     } elseif ((new Carbon($x->tanggal))->dayOfWeek == Carbon::SUNDAY){
+                //         return null;
+                //     } else {
+                //         if(new Carbon($x->total_jam) < new Carbon($x->time_total)){
+                //             return (new Carbon($x->total_jam))->diff(new Carbon($x->time_total))->format('%h:%I');
+                //         } else {
+                //             return null;
+                //         }
+                //     }
+                //   })
+                // ->rawColumns(['telat','cepat','lembur'])
                 ->make(true);
     }
 
