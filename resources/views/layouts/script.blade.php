@@ -108,6 +108,8 @@ users.forEach(function (user) {
     const name = user.name || '-';
     const profileUrl = `/profile/${encodeURIComponent(user.encrypted_id)}`;
 
+    const name2 = user.name.toLowerCase().replace(/\b\w/g, huruf => huruf.toUpperCase());
+
     const initials = name.trim()
         .split(/\s+/)
         .map(word => word.charAt(0))
@@ -115,32 +117,32 @@ users.forEach(function (user) {
         .join('')
         .toUpperCase();
 
-    html += `
-        <li class="list-group-item list-group-item-action p-0">
-            <a href="${profileUrl}"
-               class="d-flex align-items-center text-decoration-none text-reset p-3">
+        html += `
+            <li class="list-group-item list-group-item-action p-0">
+                <a href="${profileUrl}"
+                class="d-flex align-items-center text-decoration-none text-reset p-3">
 
-                <div class="avatar me-3">
-                    <span class="avatar-initial rounded-circle bg-label-primary">
-                        ${escapeHtml(initials)}
-                    </span>
-                </div>
+                    <div class="avatar me-3">
+                        <span class="avatar-initial rounded-circle bg-label-primary">
+                            ${escapeHtml(initials)}
+                        </span>
+                    </div>
 
-                <div class="flex-grow-1">
-                    <h6 class="mb-0">${escapeHtml(name)}</h6>
-                    <small class="text-muted">
-                        ${escapeHtml(user.job)}
-                    </small>
-                </div>
+                    <div class="flex-grow-1">
+                        <h6 class="mb-0">${escapeHtml(name2)}</h6>
+                        <small class="text-muted">
+                            ${escapeHtml(user.job)}
+                        </small>
+                    </div>
 
-                <div class="text-end">
-                    <small class="text-primary">
-                        ${escapeHtml(user.age)} tahun
-                    </small>
-                </div>
-            </a>
-        </li>
-    `;
+                    <div class="text-end">
+                        <small class="text-primary">
+                            ${escapeHtml(user.age)} tahun
+                        </small>
+                    </div>
+                </a>
+            </li>
+        `;
 });
 
             listElement.innerHTML = html;

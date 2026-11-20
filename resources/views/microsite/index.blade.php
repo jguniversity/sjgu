@@ -77,7 +77,7 @@
                     s.jgu.ac.id/m/
                 </span>
                 <input type="text" name="shortlink" class="form-control @error('shortlink') is-invalid @enderror"
-                    value="{{ old('shortlink') }}" placeholder="link pendek">
+                    value="{{ old('shortlink') }}" placeholder="something">
                 @error('shortlink')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
