@@ -8,8 +8,8 @@
             </div>
             <div class="user-profile-header d-flex flex-column flex-sm-row text-sm-start text-center mb-4">
                 <div class="flex-shrink-0 mt-n2 mx-sm-0 mx-auto">
-                    <img src="{{ $data->image() }}"
-                        class="d-block h-auto ms-0 ms-sm-4 rounded user-profile-img" width="100px">
+                    <img src="{{ $data->image() }}" class="d-block h-auto ms-0 ms-sm-4 rounded user-profile-img"
+                        width="100px">
                 </div>
                 <div class="flex-grow-1 mt-4">
                     <div
@@ -25,10 +25,12 @@
                                     <i class='bx bx-mail-send'></i> {{ $data->email }}
                                 </li>
                                 <li class="list-inline-item fw-semibold">
-                                    <i class='bx bx-phone'></i> {{ $data->phone }}
+                                    <i class='bx bx-phone'></i> {{ $data->phone
+    ? substr($data->phone, 0, 3) . str_repeat('*', max(0, strlen($data->phone) - 5)) . substr($data->phone, -2)
+    : 'Belum dicantumkan' }}
                                 </li>
                                 <li class="list-inline-item fw-semibold">
-                                    <i class='bx bx-briefcase'></i> {{ $data->job }}
+                                    <i class='bx bx-briefcase'></i> {{ $data->job ? $data->job : 'Belum dicantumkan'}}
                                 </li>
                                 <li class="list-inline-item fw-semibold">
                                     <i class='bx bx-male-sign'></i> {{ $data->getJK() }}

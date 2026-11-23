@@ -75,7 +75,7 @@
             <div class="input-group mb-3">
                 <select id="select_published" class="select2 form-select" name="status_publikasi" data-placeholder="Tidak dipublikasikan">
                     <option value=0>Tidak (File Pribadi)</option>
-                    <option value=1>Ya (Dipublikasikan ke user lain)</option>
+                    <option value=1>Ya (Dapat dilihat user lain)</option>
                 </select>
             </div>
         </div>
@@ -105,7 +105,7 @@
                     <th data-priority="2">Nama File</th>
                     <th>Path</th>
                     <th width="50px" >Tipe</th>
-                    <th width="50px" >Dipublikasikan</th>
+                    <th width="50px" >Publikasi</th>
                     <th width="50px">QRCode</th>
                     <th>Pembuat</th>
                     <th width="85px" data-priority="3">Aksi</th>
