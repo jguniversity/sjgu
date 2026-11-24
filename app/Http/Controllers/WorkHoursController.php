@@ -846,12 +846,13 @@ class WorkHoursController extends Controller
        
         $list_wa = "";
         foreach($x as $d){
-            $list_wa = $list_wa."\n".$d->name." (".(($diff+1) - $d->hari)." hari)";
             $x = [$d->name,(($diff+1) - $d->hari),$d->ID];
             if($d->group_id == 'JF'){
                 array_push($data['item1'],$x);
+                $list_wa = $list_wa."\n ".(($diff+1) - $d->hari)." hari: ".$d->name." ";
             } else {
                 array_push($data['item2'],$x);
+                $list_wa = $list_wa."\n ".(($diff+1) - $d->hari)." hari: ".$d->name."❎";
             }
         }
         $data['catatan'] = "<br>Untuk melihat data karyawan secara keseluruhan dapat diakses melalui tautan berikut ini:<br>"
